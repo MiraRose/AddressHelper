@@ -18,8 +18,12 @@ public class AddressValidatorApi {
 
         String defaultCountryCode = "US";
 
-        String url = "https://api.address-validator.net/api/verify?StreetAddress=&CountryCode="
-                + defaultCountryCode + "&APIKey=" + key;
+        String url = "https://api.address-validator.net/api/verify?StreetAddress=" + address.getStreetAddress()
+                + "&City=" + address.getCity()
+                + "&PostalCode=" + address.getPostalCode()
+                + "&CountryCode=" + defaultCountryCode
+                + "&APIKey=" + key;
+
         String encodedUrlString = UrlEscapers.urlFragmentEscaper().escape(url);
         HttpRequest httpRequest = HttpRequest.newBuilder(new URI(encodedUrlString)).GET().build();
         return client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
