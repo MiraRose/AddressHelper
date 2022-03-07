@@ -1,0 +1,28 @@
+plugins {
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+
+    // This dependency is used by the application.
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.guava:guava:28.1-jre'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'AddressHelper.App'
+}
